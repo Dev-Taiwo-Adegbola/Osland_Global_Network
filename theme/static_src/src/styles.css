@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-400: #5a967d;
+  --color-blue-500: #3c7a5f;
+  --color-blue-600: #1f563f;
+  --color-blue-700: #114632;
+  --color-slate-900: #1f563f;
+  --color-slate-800: #1d543d;
+}
+
+/**
+  * A catch-all path to Django template files, JavaScript, and Python files
+  * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
+  */
+@source "../../../**/*.{html,py,js}";

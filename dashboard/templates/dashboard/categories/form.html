@@ -1,0 +1,42 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}{% if object %}Edit Category{% else %}Add Category{% endif %}{% endblock %}
+{% block breadcrumb %}{% if object %}Edit Category{% else %}Add Category{% endif %}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
+        <form method="post" class="space-y-8">
+            {% csrf_token %}
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Category Name</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}<p class="mt-2 text-sm text-red-600">{{ form.name.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}<p class="mt-2 text-sm text-red-600">{{ form.description.errors.0 }}</p>{% endif %}
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-100 flex items-center justify-between">
+                <a href="{% url 'dashboard:category_list' %}" class="text-gray-500 font-bold hover:text-gray-900 transition underline">Cancel</a>
+                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                    {% if object %}Update Category{% else %}Save Category{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Add Tailwind classes to form fields
+    document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition';
+    });
+</script>
+{% endblock %}

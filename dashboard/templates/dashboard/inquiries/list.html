@@ -1,0 +1,73 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}Inquiries{% endblock %}
+{% block breadcrumb %}Inquiries{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left">
+            <thead class="bg-gray-50 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                <tr>
+                    <th class="px-8 py-4">Status</th>
+                    <th class="px-8 py-4">Client</th>
+                    <th class="px-8 py-4">Product Needed</th>
+                    <th class="px-8 py-4">Date Received</th>
+                    <th class="px-8 py-4 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                {% for inquiry in inquiries %}
+                <tr class="hover:bg-gray-50/50 transition">
+                    <td class="px-8 py-5">
+                        <span class="inline-flex px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider
+                            {% if inquiry.status == 'new' %}bg-blue-100 text-blue-700
+                            {% elif inquiry.status == 'contacted' %}bg-amber-100 text-amber-700
+                            {% else %}bg-gray-100 text-gray-700{% endif %}">
+                            {{ inquiry.get_status_display }}
+                        </span>
+                    </td>
+                    <td class="px-8 py-5">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-gray-900">{{ inquiry.full_name }}</span>
+                            <span class="text-xs text-gray-500">{{ inquiry.email }}</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-5">
+                        <span class="text-sm font-medium text-gray-700">{{ inquiry.product_needed }}</span>
+                    </td>
+                    <td class="px-8 py-5">
+                        <span class="text-sm text-gray-500">{{ inquiry.created_at|date:"M d, Y" }}</span>
+                    </td>
+                    <td class="px-8 py-5 text-right">
+                        <a href="{% url 'dashboard:inquiry_detail' inquiry.pk %}" class="bg-gray-50 text-blue-600 px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-600 hover:text-white transition">
+                            View Details
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="px-8 py-20 text-center">
+                        <p class="text-gray-400 font-medium">No inquiries found.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if is_paginated %}
+    <div class="px-8 py-6 border-t border-gray-50 flex items-center justify-between">
+        <span class="text-sm text-gray-500">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+        <div class="flex space-x-2">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 border rounded-xl text-sm font-bold hover:bg-gray-50 transition">Previous</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 border rounded-xl text-sm font-bold hover:bg-gray-50 transition">Next</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

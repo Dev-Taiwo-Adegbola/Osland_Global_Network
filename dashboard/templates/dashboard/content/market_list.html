@@ -1,0 +1,48 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}Export Markets{% endblock %}
+{% block breadcrumb %}Markets{% endblock %}
+
+{% block actions %}
+<a href="{% url 'dashboard:market_add' %}" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200 flex items-center space-x-2">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+    <span>Add Market</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="bg-gray-50 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <tr>
+                        <th class="px-8 py-4">Country Name</th>
+                        <th class="px-8 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                    {% for market in markets %}
+                    <tr class="hover:bg-gray-50/50 transition">
+                        <td class="px-8 py-5">
+                            <span class="font-bold text-gray-900 text-lg">{{ market.country_name }}</span>
+                        </td>
+                        <td class="px-8 py-5 text-right">
+                            <a href="{% url 'dashboard:market_delete' market.pk %}" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition inline-block">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="px-8 py-20 text-center">
+                            <p class="text-gray-400 font-medium">No export markets listed.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

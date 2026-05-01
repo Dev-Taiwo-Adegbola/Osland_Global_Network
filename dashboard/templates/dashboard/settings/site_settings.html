@@ -1,0 +1,83 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}Site Settings{% endblock %}
+{% block breadcrumb %}Settings / Site{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
+        <form method="post" enctype="multipart/form-data" class="space-y-8">
+            {% csrf_token %}
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Site Name</label>
+                    {{ form.site_name }}
+                </div>
+
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Logo</label>
+                    {% if object.logo %}
+                        <div class="mb-4">
+                            <img src="{{ object.logo.url }}" alt="Current Logo" class="h-20 w-auto bg-slate-900 p-4 rounded-2xl">
+                        </div>
+                    {% endif %}
+                    {{ form.logo }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Contact Email</label>
+                    {{ form.contact_email }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Contact Phone</label>
+                    {{ form.contact_phone }}
+                </div>
+
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Business Address</label>
+                    {{ form.address }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">WhatsApp Number</label>
+                    {{ form.whatsapp_number }}
+                </div>
+
+                <div class="col-span-full grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Facebook URL</label>
+                        {{ form.facebook_url }}
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Instagram URL</label>
+                        {{ form.instagram_url }}
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">LinkedIn URL</label>
+                        {{ form.linkedin_url }}
+                    </div>
+                </div>
+
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Google Maps Embed URL</label>
+                    {{ form.google_maps_embed_url }}
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-100 flex items-center justify-end">
+                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('input[type="text"], input[type="email"], input[type="url"], textarea').forEach(el => {
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition font-bold text-gray-900';
+    });
+</script>
+{% endblock %}

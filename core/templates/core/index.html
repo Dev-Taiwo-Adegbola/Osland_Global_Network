@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | {{ site_settings.company_name|default:"Osland Global Network" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-blue-950">
+    <!-- Animated background patterns -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-600/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-950 to-transparent"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+            <div class="reveal">
+                <span class="inline-block px-5 py-2 mb-8 text-xs font-black tracking-[0.2em] text-blue-400 uppercase bg-blue-500/10 rounded-full border border-blue-400/30 backdrop-blur-md">
+                    International Export Excellence
+                </span>
+                <h1 class="text-5xl md:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tight">
+                    {{ home_content.hero_title|default:"Global Network for Premium Cow-Based Products" }}
+                </h1>
+                <p class="text-xl text-blue-100/70 leading-relaxed mb-12 max-w-2xl font-medium">
+                    {{ home_content.hero_subtitle|default:"Standardizing the export of high-quality horns, hides, and processed cow products to international markets with reliability and excellence." }}
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 reveal" style="transition-delay: 200ms;">
+                <a href="{% url 'products:list' %}" class="btn-premium px-10 py-5 bg-blue-600 text-white rounded-full font-black text-lg text-center hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/40">
+                    Explore Products
+                </a>
+                <a href="{% url 'inquiries:request_quote' %}" class="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-black text-lg text-center hover:bg-white/20 transition-all backdrop-blur-md">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats / Trust Section -->
+<section class="bg-white py-12 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <p class="text-3xl font-black text-blue-900">15+</p>
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Countries Served</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-black text-blue-900">100%</p>
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Quality Assurance</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-black text-blue-900">500+</p>
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Tons Exported</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-black text-blue-900">24/7</p>
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Inquiry Response</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 space-y-4 md:space-y-0 reveal">
+            <div class="max-w-xl">
+                <h2 class="text-5xl font-black text-gray-900 mb-6 tracking-tight">Featured Products</h2>
+                <div class="w-24 h-2 bg-blue-600 rounded-full mb-8"></div>
+                <p class="text-gray-500 text-xl font-medium leading-relaxed">Discover our premium range of ivory-standard horns, high-grade hides, and meticulously processed leather products.</p>
+            </div>
+            <a href="{% url 'products:list' %}" class="text-blue-600 font-black uppercase tracking-widest text-sm flex items-center space-x-3 group mb-2">
+                <span>View Full Catalog</span>
+                <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for product in latest_products %}
+            <div class="hover-lift bg-white rounded-[2.5rem] overflow-hidden shadow-sm transition-all duration-500 group border border-gray-100 flex flex-col reveal" style="transition-delay: {{ forloop.counter|add:2 }}00ms;">
+                <div class="relative h-72 overflow-hidden">
+                    {% if product.images.first %}
+                        <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    {% else %}
+                        <div class="w-full h-full bg-blue-50 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                    {% endif %}
+                    <div class="absolute top-6 left-6">
+                        <span class="px-4 py-1.5 bg-white/95 backdrop-blur text-blue-900 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg">
+                            {{ product.category.name }}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-10 pb-12 flex-grow">
+                    <h3 class="text-2xl font-black text-gray-900 mb-4 tracking-tight">{{ product.name }}</h3>
+                    <p class="text-gray-500 font-medium mb-8 line-clamp-2 text-sm leading-relaxed">{{ product.description }}</p>
+                    <div class="flex items-center justify-between pt-8 border-t border-gray-50 mt-auto">
+                        <div class="flex flex-col">
+                            <span class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-1">Minimum Order</span>
+                            <span class="text-blue-600 font-black text-sm uppercase">{{ product.minimum_order_quantity|default:"Inquiry Req." }}</span>
+                        </div>
+                        <a href="{% url 'products:detail' product.slug %}" class="w-12 h-12 flex items-center justify-center bg-gray-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-20 text-center">
+                <p class="text-gray-400 font-medium">Coming soon: Our featured product selection.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="py-24 bg-white overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-20">
+            <h2 class="text-4xl font-black text-gray-900 mb-6">Export Services</h2>
+            <div class="w-20 h-1.5 bg-blue-600 rounded-full mx-auto mb-8"></div>
+            <p class="text-gray-600 text-lg">We provide a comprehensive end-to-end export solution tailored for the leather and livestock byproduct industry.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {% for service in services %}
+            <div class="p-10 bg-gray-50 rounded-3xl hover:bg-blue-600 group transition-all duration-500 cursor-default">
+                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 transition-colors">
+                    <svg class="w-8 h-8 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.48V11.5"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 group-hover:text-white mb-4 transition-colors">{{ service.title }}</h3>
+                <p class="text-gray-500 group-hover:text-blue-100 transition-colors leading-relaxed">
+                    {{ service.description }}
+                </p>
+            </div>
+            {% empty %}
+            <!-- Placeholder Services if none in DB -->
+            <div class="p-10 bg-gray-50 rounded-3xl">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Control</h3>
+                <p class="text-gray-500">Rigorous inspection standards to ensure only premium products leave our facility.</p>
+            </div>
+             <div class="p-10 bg-gray-50 rounded-3xl">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Global Logistics</h3>
+                <p class="text-gray-500">Efficient shipping solutions and documentation handling for smooth international transit.</p>
+            </div>
+             <div class="p-10 bg-gray-50 rounded-3xl">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Export Adherent</h3>
+                <p class="text-gray-500">Full compliance with international export regulations and sustainability standards.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-blue-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-8">Ready to expand your supply chain?</h2>
+        <p class="text-blue-100 text-xl mb-12 max-w-2xl mx-auto">Get in touch with our export specialists today for a customized quote and partnership opportunity.</p>
+        <a href="{% url 'inquiries:request_quote' %}" class="inline-block px-10 py-5 bg-white text-blue-600 rounded-full font-black text-lg hover:bg-gray-100 transition-all shadow-2xl shadow-blue-900/40">
+            Request a Quote Now
+        </a>
+    </div>
+</section>
+{% endblock %}

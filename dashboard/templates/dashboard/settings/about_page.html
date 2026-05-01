@@ -1,0 +1,57 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}About Page Content{% endblock %}
+{% block breadcrumb %}Settings / About Page{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
+        <form method="post" enctype="multipart/form-data" class="space-y-12">
+            {% csrf_token %}
+            
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 gap-8">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Page Title</label>
+                        {{ form.title }}
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Main Content</label>
+                        {{ form.main_content }}
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">About Page Image</label>
+                        {% if object.main_image %}
+                            <img src="{{ object.main_image.url }}" class="h-48 rounded-2xl mb-4 border border-gray-100">
+                        {% endif %}
+                        {{ form.main_image }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-12 border-t border-gray-100">
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Years of Experience</label>
+                    {{ form.experience_years }}
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Happy Clients</label>
+                    {{ form.happy_clients }}
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-100 flex items-center justify-end">
+                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                    Update About Page
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => {
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition font-bold text-gray-900';
+    });
+</script>
+{% endblock %}

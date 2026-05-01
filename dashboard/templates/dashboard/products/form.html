@@ -1,0 +1,82 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block header_title %}{% if object %}Edit Product{% else %}Add Product{% endif %}{% endblock %}
+{% block breadcrumb %}{% if object %}Edit Product{% else %}Add Product{% endif %}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
+        <form method="post" class="space-y-8">
+            {% csrf_token %}
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Product Name</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}<p class="mt-2 text-sm text-red-600">{{ form.name.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Category</label>
+                    {{ form.category }}
+                    {% if form.category.errors %}<p class="mt-2 text-sm text-red-600">{{ form.category.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Grade / Quality</label>
+                    {{ form.grade }}
+                    {% if form.grade.errors %}<p class="mt-2 text-sm text-red-600">{{ form.grade.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}<p class="mt-2 text-sm text-red-600">{{ form.description.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Sizes Available</label>
+                    {{ form.sizes_available }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Packaging Type</label>
+                    {{ form.packaging_type }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">MOQ</label>
+                    {{ form.minimum_order_quantity }}
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Export Availability</label>
+                    {{ form.export_availability }}
+                </div>
+
+                <div class="col-span-full flex items-center space-x-3 p-4 bg-gray-50 rounded-2xl">
+                    {{ form.featured }}
+                    <label class="font-bold text-gray-900">Feature this product on homepage</label>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-100 flex items-center justify-between">
+                <a href="{% url 'dashboard:product_list' %}" class="text-gray-500 font-bold hover:text-gray-900 transition underline">Cancel</a>
+                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                    {% if object %}Update Product{% else %}Save Product{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Add Tailwind classes to form fields
+    document.querySelectorAll('input[type="text"], input[type="url"], select, textarea').forEach(el => {
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition';
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        el.className += ' w-6 h-6 text-blue-600 rounded-lg border-gray-200 focus:ring-blue-600 transition';
+    });
+</script>
+{% endblock %}
