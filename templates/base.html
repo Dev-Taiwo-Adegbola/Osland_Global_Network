@@ -39,10 +39,24 @@
             </div>
 
             <!-- Mobile menu button -->
-            <button class="md:hidden text-gray-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <button id="mobileMenuBtn" class="md:hidden text-gray-600 focus:outline-none hover:text-forest-green-600 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 p-6 space-y-4 animate-in slide-in-from-top duration-300">
+            <div class="flex flex-col space-y-4 text-xs font-black uppercase tracking-[0.2em]">
+                <a href="{% url 'core:home' %}" class="text-gray-900 hover:text-forest-green-600 transition-colors py-2 border-b border-gray-50">Home</a>
+                <a href="{% url 'products:list' %}" class="text-gray-900 hover:text-forest-green-600 transition-colors py-2 border-b border-gray-50">Products</a>
+                <a href="{% url 'gallery:list' %}" class="text-gray-900 hover:text-forest-green-600 transition-colors py-2 border-b border-gray-50">Gallery</a>
+                <a href="{% url 'core:about' %}" class="text-gray-900 hover:text-forest-green-600 transition-colors py-2 border-b border-gray-50">About</a>
+                <a href="{% url 'core:contact' %}" class="text-gray-900 hover:text-forest-green-600 transition-colors py-2 border-b border-gray-50">Contact</a>
+                <a href="{% url 'inquiries:request_quote' %}" class="mt-4 px-8 py-4 bg-forest-green-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg">
+                    Request Quote
+                </a>
+            </div>
+        </div>
     </header>
 
     {% if messages %}
@@ -132,6 +146,16 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        
+        if (menuBtn && menu) {
+            menuBtn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
     </script>
 </body>
 </html>
