@@ -7,20 +7,24 @@ pip install -r requirements.txt
 # Create static directory if it doesn't exist
 mkdir -p static
 
-# Rebuild Tailwind CSS if needed (assumes node/npx is available)
-# cd theme/static_src && npx tailwindcss -i src/styles.css -o ../static/css/dist/styles.css && cd ../../
-
 python manage.py collectstatic --no-input
 python manage.py migrate
 
-# Handle SQLite persistence on Render
-if [ -n "$DB_PATH" ]; then
-    DB_DIR=$(dirname "$DB_PATH")
-    mkdir -p "$DB_DIR"
+# Handle Persistence on Render
+if [ -n "$PERSISTENT_DATA_PATH" ]; then
+    echo "Configuring persistence at $PERSISTENT_DATA_PATH..."
+    mkdir -p "$PERSISTENT_DATA_PATH/media"
     
-    # If DB doesn't exist on persistent volume, seed it from the repo version
-    if [ ! -f "$DB_PATH" ] && [ -f "db.sqlite3" ]; then
+    # 1. Handle SQLite DB Seeding
+    DB_TARGET="$PERSISTENT_DATA_PATH/db.sqlite3"
+    if [ ! -f "$DB_TARGET" ] && [ -f "db.sqlite3" ]; then
         echo "Seeding persistent database from repository..."
-        cp db.sqlite3 "$DB_PATH"
+        cp db.sqlite3 "$DB_TARGET"
+    fi
+
+    # 2. Handle Media Seeding (Logo, Page images)
+    if [ -d "media" ]; then
+        echo "Seeding persistent media from repository..."
+        cp -rn media/* "$PERSISTENT_DATA_PATH/media/" || true
     fi
 fi

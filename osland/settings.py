@@ -89,12 +89,13 @@ WSGI_APPLICATION = 'osland.wsgi.application'
 
 
 # Database
-DB_PATH = os.environ.get('DB_PATH')
-if DB_PATH:
+PERSISTENT_DATA_PATH = os.environ.get('PERSISTENT_DATA_PATH')
+
+if PERSISTENT_DATA_PATH:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': DB_PATH,
+            'NAME': os.path.join(PERSISTENT_DATA_PATH, 'db.sqlite3'),
         }
     }
 else:
@@ -151,7 +152,10 @@ STORAGES = {
 }
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+if PERSISTENT_DATA_PATH:
+    MEDIA_ROOT = os.path.join(PERSISTENT_DATA_PATH, 'media')
+else:
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
