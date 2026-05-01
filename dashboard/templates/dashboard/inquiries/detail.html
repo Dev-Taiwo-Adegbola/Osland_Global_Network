@@ -13,9 +13,9 @@
                     <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Subject Matter</span>
                     <h2 class="text-3xl font-black text-gray-900">Purchase Inquiry for {{ object.product_needed }}</h2>
                 </div>
-                <div class="bg-blue-50 px-6 py-4 rounded-2xl">
-                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">Quantity Requested</span>
-                    <span class="text-xl font-bold text-blue-900">{{ object.quantity }}</span>
+                <div class="bg-forest-green-50 px-6 py-4 rounded-2xl">
+                    <span class="text-xs font-bold text-forest-green-400 uppercase tracking-widest block mb-1">Quantity Requested</span>
+                    <span class="text-xl font-bold text-forest-green-900">{{ object.quantity }}</span>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
                     <div class="p-6 border border-gray-100 rounded-2xl">
                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Email Address</span>
-                        <a href="mailto:{{ object.email }}" class="text-blue-600 font-bold hover:underline">{{ object.email }}</a>
+                        <a href="mailto:{{ object.email }}" class="text-forest-green-600 font-bold hover:underline">{{ object.email }}</a>
                     </div>
                     <div class="p-6 border border-gray-100 rounded-2xl">
                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Phone Number</span>
@@ -58,7 +58,7 @@
                 <div>
                     {{ form.status }}
                 </div>
-                <button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                <button type="submit" class="w-full py-4 bg-forest-green-600 text-white rounded-2xl font-black text-lg hover:bg-forest-green-700 transition shadow-xl shadow-forest-green-500/20">
                     Update Status
                 </button>
             </form>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="bg-slate-900 rounded-3xl p-8 text-white">
-            <h4 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">Internal Notes</h4>
+            <h4 class="text-sm font-bold text-forest-green-400 uppercase tracking-widest mb-4">Internal Notes</h4>
             <p class="text-sm text-slate-400 mb-6">Staff notes for this inquiry can go here in a future update.</p>
             <div class="w-full h-24 bg-slate-800 rounded-2xl flex items-center justify-center border border-dashed border-slate-700 text-slate-500 text-xs text-center px-4">
                 Feature Coming Soon
@@ -78,6 +78,6 @@
 </div>
 
 <script>
-    document.querySelector('select').className = 'w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition font-bold text-gray-900';
+    document.querySelector('select').className = 'w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-forest-green-600 transition font-bold text-gray-900';
 </script>
 {% endblock %}

@@ -3,11 +3,11 @@
 {% block title %}Photo Gallery | {{ site_settings.company_name|default:"Osland Global Network" }}{% endblock %}
 
 {% block content %}
-<section class="bg-blue-900 py-24 text-white relative overflow-hidden">
+<section class="bg-forest-green-900 py-24 text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter reveal">Visual Gallery</h1>
-        <p class="text-xl text-blue-100/70 max-w-2xl leading-relaxed font-medium reveal" style="transition-delay: 100ms;">A visual showcase of our facilities, products, and processing standards.</p>
+        <p class="text-xl text-sage-100/70 max-w-2xl leading-relaxed font-medium reveal" style="transition-delay: 100ms;">A visual showcase of our facilities, products, and processing standards.</p>
     </div>
 </section>
 
@@ -15,11 +15,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
         <div class="flex flex-wrap items-center gap-6">
             <span class="text-xs font-black text-gray-400 uppercase tracking-[0.2em] mr-2">Browse By</span>
-            <a href="{% url 'gallery:list' %}" class="px-8 py-3 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 {% if not current_category %}bg-blue-600 text-white shadow-[0_10px_30px_-10px_rgba(37,99,235,0.4)]{% else %}bg-gray-100 text-gray-500 hover:bg-gray-200{% endif %}">
+            <a href="{% url 'gallery:list' %}" class="px-8 py-3 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 {% if not current_category %}bg-forest-green-600 text-white shadow-[0_10px_30px_-10px_rgba(31,86,63,0.4)]{% else %}bg-gray-100 text-gray-500 hover:bg-gray-200{% endif %}">
                 All Photos
             </a>
             {% for cat_val, cat_name in categories %}
-            <a href="?category={{ cat_val }}" class="px-8 py-3 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 {% if current_category == cat_val %}bg-blue-600 text-white shadow-[0_10px_30px_-10px_rgba(37,99,235,0.4)]{% else %}bg-gray-100 text-gray-500 hover:bg-gray-200{% endif %}">
+            <a href="?category={{ cat_val }}" class="px-8 py-3 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 {% if current_category == cat_val %}bg-forest-green-600 text-white shadow-[0_10px_30px_-10px_rgba(31,86,63,0.4)]{% else %}bg-gray-100 text-gray-500 hover:bg-gray-200{% endif %}">
                 {{ cat_name }}
             </a>
             {% endfor %}
@@ -34,11 +34,11 @@
             <div class="break-inside-avoid hover-lift bg-white rounded-[2.5rem] overflow-hidden shadow-sm transition-all duration-500 group border border-gray-100 reveal">
                 <div class="relative overflow-hidden">
                     <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-full h-auto group-hover:scale-105 transition-transform duration-1000">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-forest-green-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
                         {% if image.title %}
                         <h4 class="text-white font-black text-xl mb-3 tracking-tight">{{ image.title }}</h4>
                         {% endif %}
-                        <span class="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">
+                        <span class="text-sage-400 text-[10px] font-black uppercase tracking-[0.2em]">
                             {{ image.get_category_display }}
                         </span>
                     </div>

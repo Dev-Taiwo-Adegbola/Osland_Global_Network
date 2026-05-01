@@ -27,6 +27,7 @@ class Product(models.Model):
     packaging_type = models.CharField(max_length=255, blank=True)
     minimum_order_quantity = models.CharField(max_length=255, blank=True)
     export_availability = models.CharField(max_length=255, blank=True)
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
     featured = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

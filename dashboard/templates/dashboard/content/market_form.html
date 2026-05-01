@@ -18,7 +18,7 @@
 
             <div class="pt-8 border-t border-gray-100 flex items-center justify-between">
                 <a href="{% url 'dashboard:market_list' %}" class="text-gray-500 font-bold hover:text-gray-900 transition underline">Cancel</a>
-                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                <button type="submit" class="bg-forest-green-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-forest-green-700 transition shadow-xl shadow-forest-green-500/20">
                     Save Market
                 </button>
             </div>
@@ -28,7 +28,7 @@
 
 <script>
     document.querySelectorAll('input[type="text"]').forEach(el => {
-        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition font-bold text-gray-900';
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-forest-green-600 transition font-bold text-gray-900';
     });
 </script>
 {% endblock %}

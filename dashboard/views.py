@@ -53,7 +53,7 @@ class ProductListView(LoginRequiredMixin, ListView):
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
-    fields = ['category', 'name', 'description', 'grade', 'sizes_available', 'packaging_type', 'minimum_order_quantity', 'export_availability', 'featured']
+    fields = ['category', 'name', 'description', 'grade', 'sizes_available', 'packaging_type', 'minimum_order_quantity', 'export_availability', 'image', 'featured']
     template_name = 'dashboard/products/form.html'
     success_url = reverse_lazy('dashboard:product_list')
 
@@ -63,7 +63,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
-    fields = ['category', 'name', 'description', 'grade', 'sizes_available', 'packaging_type', 'minimum_order_quantity', 'export_availability', 'featured']
+    fields = ['category', 'name', 'description', 'grade', 'sizes_available', 'packaging_type', 'minimum_order_quantity', 'export_availability', 'image', 'featured']
     template_name = 'dashboard/products/form.html'
     success_url = reverse_lazy('dashboard:product_list')
 

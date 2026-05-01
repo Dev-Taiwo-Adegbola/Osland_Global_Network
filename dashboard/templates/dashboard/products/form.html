@@ -6,7 +6,7 @@
 {% block content %}
 <div class="max-w-4xl">
     <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
-        <form method="post" class="space-y-8">
+        <form method="post" enctype="multipart/form-data" class="space-y-8">
             {% csrf_token %}
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -54,6 +54,23 @@
                     {{ form.export_availability }}
                 </div>
 
+                <div class="col-span-full">
+                    <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Product Image</label>
+                    <div class="mt-2 flex items-center space-x-6 bg-gray-50 p-6 rounded-3xl border-2 border-dashed border-gray-200 hover:border-forest-green-400 transition">
+                        <div class="flex-shrink-0 w-24 h-24 bg-white rounded-2xl overflow-hidden flex items-center justify-center border border-gray-100">
+                            {% if object.image %}
+                                <img src="{{ object.image.url }}" class="w-full h-full object-cover">
+                            {% else %}
+                                <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            {% endif %}
+                        </div>
+                        <div class="flex-grow">
+                            {{ form.image }}
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-2 px-1">Maximum 5MB. JPG, PNG or WEBP.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-span-full flex items-center space-x-3 p-4 bg-gray-50 rounded-2xl">
                     {{ form.featured }}
                     <label class="font-bold text-gray-900">Feature this product on homepage</label>
@@ -62,7 +79,7 @@
 
             <div class="pt-8 border-t border-gray-100 flex items-center justify-between">
                 <a href="{% url 'dashboard:product_list' %}" class="text-gray-500 font-bold hover:text-gray-900 transition underline">Cancel</a>
-                <button type="submit" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-500/20">
+                <button type="submit" class="bg-forest-green-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-forest-green-700 transition shadow-xl shadow-forest-green-500/20">
                     {% if object %}Update Product{% else %}Save Product{% endif %}
                 </button>
             </div>
@@ -72,11 +89,11 @@
 
 <script>
     // Add Tailwind classes to form fields
-    document.querySelectorAll('input[type="text"], input[type="url"], select, textarea').forEach(el => {
-        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-600 transition';
+    document.querySelectorAll('input[type="text"], input[type="url"], input[type="file"], select, textarea').forEach(el => {
+        el.className += ' w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-forest-green-600 transition';
     });
     document.querySelectorAll('input[type="checkbox"]').forEach(el => {
-        el.className += ' w-6 h-6 text-blue-600 rounded-lg border-gray-200 focus:ring-blue-600 transition';
+        el.className += ' w-6 h-6 text-forest-green-600 rounded-lg border-gray-200 focus:ring-forest-green-600 transition';
     });
 </script>
 {% endblock %}
