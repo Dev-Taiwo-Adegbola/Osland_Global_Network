@@ -1,10 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blue-400: #5a967d;
-  --color-blue-500: #3c7a5f;
-  --color-blue-600: #1f563f;
-  --color-blue-700: #114632;
+  /* Alias blue to forest-green for backwards compatibility */
+  --color-blue-400: var(--color-forest-green-400);
+  --color-blue-500: var(--color-forest-green-500);
+  --color-blue-600: var(--color-forest-green-600);
+  --color-blue-700: var(--color-forest-green-700);
+  
+  /* Primary Brand: Forest Green */
+  --color-forest-green-50: #f0fdf4;
+  --color-forest-green-100: #dcfce7;
+  --color-forest-green-200: #bbf7d0;
+  --color-forest-green-300: #86efac;
+  --color-forest-green-400: #5a967d; /* Brand Sage-ish */
+  --color-forest-green-500: #3c7a5f; /* Brand Medium */
+  --color-forest-green-600: #1f563f; /* Primary Official Brand Green */
+  --color-forest-green-700: #114632; /* Deep Forest */
+  --color-forest-green-800: #0a3a29;
+  --color-forest-green-900: #052e20;
+  --color-forest-green-950: #021a12;
+
+  /* Accent Brand: Sage */
+  --color-sage-50: #f1f5f3;
+  --color-sage-100: #e2e9e6;
+  --color-sage-400: #5a967d;
+  --color-sage-900: #1f563f;
+
+  /* Legacy overrides */
   --color-slate-900: #1f563f;
   --color-slate-800: #1d543d;
 }
