@@ -29,9 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-j(b9moi4j&-=v_1w69fe@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,*').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,*,oslandglobal.com.ng,www.oslandglobal.com.ng').split(',')
 
-CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000').split(',')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,https://oslandglobal.com.ng,https://www.oslandglobal.com.ng').split(',')
 
 # Application definition
 
