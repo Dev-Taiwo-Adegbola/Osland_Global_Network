@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-j(b9moi4j&-=v_1w69fe@8(buj07w2c)d!n8uhem5j0-0bmpw4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,*,oslandglobal.com.ng,www.oslandglobal.com.ng').split(',')
 
@@ -152,10 +152,7 @@ STORAGES = {
 }
 
 MEDIA_URL = 'media/'
-if PERSISTENT_DATA_PATH:
-    MEDIA_ROOT = os.path.join(PERSISTENT_DATA_PATH, 'media')
-else:
-    MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
