@@ -8,7 +8,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             <!-- Left: Content -->
             <div>
-                <span class="inline-block px-4 py-1.5 bg-forest-green-100 text-forest-green-900 text-xs font-black uppercase tracking-widest rounded-full mb-6">
+                <span class="inline-block px-4 py-1.5 text-xs font-black uppercase tracking-widest rounded-full mb-6" style="background-color: rgba(196, 154, 40, 0.1); color: #c49a28;">
                     Partnership Inquiry
                 </span>
                 <h1 class="text-5xl font-black text-gray-900 mb-8 leading-tight">Request a Professional Export Quote</h1>
@@ -18,7 +18,7 @@
 
                 <div class="space-y-10">
                     <div class="flex items-center space-x-6">
-                        <div class="w-12 h-12 bg-white shadow-lg rounded-xl flex items-center justify-center text-forest-green-600">
+                        <div class="w-12 h-12 bg-white shadow-lg rounded-xl flex items-center justify-center" style="color: #c49a28;">
                              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <div>
@@ -91,7 +91,7 @@
                         {% if form.message.errors %}<p class="text-xs text-red-500 mt-2 px-4">{{ form.message.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <button type="submit" class="w-full py-5 bg-forest-green-600 text-white rounded-full font-black text-lg hover:bg-forest-green-700 transition shadow-xl shadow-forest-green-500/20 active:scale-95 duration-200">
+                    <button type="submit" class="w-full py-5 text-forest-green-950 rounded-full font-black text-lg transition shadow-xl active:scale-95 duration-200" style="background: linear-gradient(135deg, #d4a435, #c49a28); box-shadow: 0 10px 30px rgba(196, 154, 40, 0.4);">
                         Send Quote Request
                     </button>
                     

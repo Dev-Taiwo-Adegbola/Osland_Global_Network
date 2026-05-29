@@ -3,7 +3,7 @@ services:
     name: osland-global-network
     env: python
     buildCommand: "./render_build.sh"
-    startCommand: "gunicorn osland.wsgi:application"
+    startCommand: "chmod +x ./render_start.sh && ./render_start.sh"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

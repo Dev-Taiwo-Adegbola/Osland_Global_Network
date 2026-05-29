@@ -28,6 +28,8 @@ class HomePage(models.Model):
     about_section_title = models.CharField(max_length=255, blank=True, null=True)
     about_section_content = models.TextField(blank=True, null=True)
     about_section_image = models.ImageField(upload_to='home/', blank=True, null=True)
+    about_section_image_2 = models.ImageField(upload_to='home/', blank=True, null=True)
+    about_section_image_3 = models.ImageField(upload_to='home/', blank=True, null=True)
     mission_statement = models.TextField(blank=True, null=True)
     vision_statement = models.TextField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)

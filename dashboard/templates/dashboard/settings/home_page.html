@@ -43,12 +43,30 @@
                         <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">About Content</label>
                         {{ form.about_section_content }}
                     </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">About Image</label>
-                        {% if object.about_section_image %}
-                            <img src="{{ object.about_section_image.url }}" class="h-32 rounded-2xl mb-4 border border-gray-100">
-                        {% endif %}
-                        {{ form.about_section_image }}
+                    <!-- About Image Slider Uploads -->
+                    <div class="space-y-6">
+                        <p class="text-xs font-black text-gold-500 uppercase tracking-[0.2em]">About Section Slider Images</p>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Image 1 (Required)</label>
+                            {% if object.about_section_image %}
+                                <img src="{{ object.about_section_image.url }}" class="h-28 rounded-2xl mb-3 border border-gray-100 object-cover">
+                            {% endif %}
+                            {{ form.about_section_image }}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Image 2 (Optional)</label>
+                            {% if object.about_section_image_2 %}
+                                <img src="{{ object.about_section_image_2.url }}" class="h-28 rounded-2xl mb-3 border border-gray-100 object-cover">
+                            {% endif %}
+                            {{ form.about_section_image_2 }}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest px-1">Image 3 (Optional)</label>
+                            {% if object.about_section_image_3 %}
+                                <img src="{{ object.about_section_image_3.url }}" class="h-28 rounded-2xl mb-3 border border-gray-100 object-cover">
+                            {% endif %}
+                            {{ form.about_section_image_3 }}
+                        </div>
                     </div>
                 </div>
             </div>

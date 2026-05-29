@@ -26,6 +26,14 @@
   --color-sage-400: #5a967d;
   --color-sage-900: #1f563f;
 
+  /* Premium Gold Accent */
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-400: #d4a435;
+  --color-gold-500: #c49a28;
+  --color-gold-600: #a37c18;
+
   /* Legacy overrides */
   --color-slate-900: #1f563f;
   --color-slate-800: #1d543d;

@@ -33,13 +33,13 @@
             <!-- Product Info -->
             <div>
                 <nav class="flex mb-10 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 reveal">
-                    <a href="{% url 'products:list' %}" class="hover:text-forest-green-600 transition">Catalog</a>
+                    <a href="{% url 'products:list' %}" class="transition" style="color: #c49a28;">Catalog</a>
                     <span class="mx-3 text-gray-200">/</span>
-                    <a href="{% url 'products:list' %}?category={{ product.category.slug }}" class="hover:text-forest-green-600 transition">{{ product.category.name }}</a>
+                    <a href="{% url 'products:list' %}?category={{ product.category.slug }}" class="transition" style="color: #c49a28;">{{ product.category.name }}</a>
                 </nav>
                 
                 <h1 class="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter reveal" style="transition-delay: 100ms;">{{ product.name }}</h1>
-                <div class="inline-block px-5 py-2 bg-forest-green-50 text-forest-green-900 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-12 border border-forest-green-100 reveal" style="transition-delay: 200ms;">
+                <div class="inline-block px-5 py-2 text-forest-green-950 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-12 border reveal" style="background-color: rgba(196, 154, 40, 0.1); border-color: rgba(196, 154, 40, 0.3); transition-delay: 200ms;">
                     Standard: {{ product.grade|default:"Export Grade A" }}
                 </div>
 
@@ -49,7 +49,7 @@
 
                 <!-- Specifications Table -->
                 <div class="bg-gray-50 rounded-[2.5rem] p-10 mb-12 border border-gray-100 reveal" style="transition-delay: 300ms;">
-                    <h3 class="text-xs font-black text-forest-green-600 mb-10 uppercase tracking-[0.3em]">Technical Specifications</h3>
+                    <h3 class="text-xs font-black mb-10 uppercase tracking-[0.3em]" style="color: #c49a28;">Technical Specifications</h3>
                     <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                         <div class="flex flex-col border-b border-gray-200 pb-4">
                             <dt class="text-gray-400 font-black uppercase text-[9px] tracking-[0.2em] mb-2">Available Sizes</dt>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="flex flex-col border-b border-gray-200 pb-4">
                             <dt class="text-gray-400 font-black uppercase text-[9px] tracking-[0.2em] mb-2">Minimum Order</dt>
-                            <dd class="text-forest-green-600 font-black text-lg">{{ product.minimum_order_quantity|default:"Inquiry" }}</dd>
+                            <dd class="font-black text-lg" style="color: #c49a28;">{{ product.minimum_order_quantity|default:"Inquiry" }}</dd>
                         </div>
                         <div class="flex flex-col border-b border-gray-200 pb-4">
                             <dt class="text-gray-400 font-black uppercase text-[9px] tracking-[0.2em] mb-2">Logistics</dt>
@@ -71,10 +71,10 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="{% url 'inquiries:request_quote' %}?product={{ product.id }}" class="flex-1 px-8 py-5 bg-forest-green-600 text-white rounded-full font-black text-lg text-center hover:bg-forest-green-700 transition shadow-xl shadow-forest-green-500/20">
+                    <a href="{% url 'inquiries:request_quote' %}?product={{ product.id }}" class="flex-1 px-8 py-5 text-forest-green-950 rounded-full font-black text-lg text-center transition shadow-xl hover:-translate-y-0.5" style="background: linear-gradient(135deg, #d4a435, #c49a28); box-shadow: 0 10px 25px rgba(196, 154, 40, 0.4);">
                         Inquire About This Product
                     </a>
-                    <a href="https://wa.me/{{ site_settings.whatsapp_number }}" target="_blank" class="px-8 py-5 border-2 border-green-500 text-green-600 rounded-full font-black text-lg text-center hover:bg-green-50 transition">
+                    <a href="https://wa.me/{{ site_settings.whatsapp_number }}" target="_blank" class="px-8 py-5 border-2 rounded-full font-black text-lg text-center transition hover:bg-white" style="border-color: #c49a28; color: #c49a28;">
                         WhatsApp Now
                     </a>
                 </div>

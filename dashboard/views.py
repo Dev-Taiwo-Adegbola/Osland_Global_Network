@@ -196,7 +196,7 @@ class HomePageUpdateView(LoginRequiredMixin, UpdateView):
     model = HomePage
     fields = [
         'hero_title', 'hero_subtitle', 'hero_image',
-        'about_section_title', 'about_section_content', 'about_section_image',
+        'about_section_title', 'about_section_content', 'about_section_image', 'about_section_image_2', 'about_section_image_3',
         'mission_statement', 'vision_statement'
     ]
     template_name = 'dashboard/settings/home_page.html'
